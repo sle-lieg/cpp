@@ -17,3 +17,5 @@ clean:
 
 fclean: clean
 	rm $(EXEC)
+
+re: fclean all

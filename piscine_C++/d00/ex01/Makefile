@@ -1,7 +1,7 @@
 EXEC = phonebook
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror
-SRC_FILES = phonebook.cpp
+SRC_FILES = main.cpp Phonebook.class.cpp Contact.class.cpp
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
 
 all: $(EXEC)

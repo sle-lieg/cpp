@@ -1,9 +1,7 @@
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_CLASS_HPP
+# define CONTACT_CLASS_HPP
 
-#include <string>
-
-#define NB_CONTACTS 8
+#include <iostream>
 
 class Contact {
     public:
@@ -11,7 +9,6 @@ class Contact {
         void    displayTruncContact(int index) const;
         void    displayFullContact() const;
         void    displayData(std::string data) const;
-
         void    setFirstName(std::string data);
         void    setLastName(std::string data);
         void    setNickName(std::string data);
@@ -36,19 +33,6 @@ class Contact {
         std::string _favoriteMeal;
         std::string _underwearColor;
         std::string _darkestSecret;
-};
-
-class Phonebook {
-    public:
-        Phonebook();
-        void    add();
-        void    search() const;
-        void    exit() const;
-        void    displayContactsList() const;
-
-    protected:
-        int     _nbContacts;
-        Contact _contacts[NB_CONTACTS];
 };
 
 #endif
