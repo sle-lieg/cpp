@@ -7,6 +7,7 @@
 #define NB_CONTACTS 8
 
 class Phonebook {
+    
     public:
         Phonebook();
         void    add();

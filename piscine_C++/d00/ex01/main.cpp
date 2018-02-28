@@ -8,7 +8,7 @@ int main(int ac, char **av)
     
     Phonebook app;
     std::string cmd("");
-
+    
     do {
         std::cout << "Type a command: ADD -> add a new contact." << std::endl;
         std::cout << "                SEARCH -> search a contact." << std::endl;
