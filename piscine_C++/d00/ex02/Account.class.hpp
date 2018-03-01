@@ -43,7 +43,7 @@ private:
 	int				_amount;
 	int				_nbDeposits;
 	int				_nbWithdrawals;
-	int				_nbChecks; // bonus
+	// int				_nbChecks; // bonus
 
 	Account( void );
 
