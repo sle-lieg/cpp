@@ -10,7 +10,7 @@ int Account::_totalNbWithdrawals = 0;
 // {}
 
 Account::Account(int initial_deposit) : _accountIndex(_nbAccounts), _amount(initial_deposit),
-                                        _nbDeposits(0), _nbWithdrawals(0)
+                                        _nbDeposits(0), _nbWithdrawals(0), _nbChecks(0)
 {
     Account::_totalAmount += initial_deposit;
     std::cout << "index:" << _accountIndex << ";";
@@ -113,5 +113,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 
 int		Account::checkAmount( void ) const
 {
+    _nbChecks++;
+    std::cout << "NOMBRE: " << _nbChecks << std::endl;
     return _amount;
 }
