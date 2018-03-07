@@ -15,6 +15,8 @@ class ZombieEvent
         Zombie* randomChump( void ) const;
 
     private:
+        std::string _randName( void ) const;
+
         std::string _typeModel;
 };
 
