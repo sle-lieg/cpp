@@ -10,9 +10,10 @@ class Pony
         Pony();
         ~Pony();
         Pony(std::string name, std::string race, int age);
-        void    getRace( void ) const;
-        void    getName( void ) const;
-        void    getAge( void ) const;
+        std::string     getRace( void ) const;
+        std::string     getName( void ) const;
+        int             getAge( void ) const;
+        void            presentation() const;
 
     protected:
 

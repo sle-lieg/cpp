@@ -1,4 +1,5 @@
 #include "Pony.hpp"
+#include <iostream>
 
 Pony::Pony() : _name("Poney"), _race("Stalion")
 {}
@@ -8,17 +9,26 @@ Pony::Pony(std::string name, std::string race, int age) :
 {}
 
 Pony::~Pony()
+{}
 
-void Pony::getRace() const
+std::string Pony::getRace() const
 {
     return _race;
 }
 
-void Pony::getName() const
+std::string Pony::getName() const
 {
     return _name;
 }
- void Pony::getAge() const
- {
-     return _age;
- }
+
+int Pony::getAge() const
+{
+    return _age;
+}
+
+void Pony::presentation() const
+{
+    std::cout << "Name: " << getName() << std::endl;
+    std::cout << "Race: " << getRace() << std::endl;
+    std::cout << "Age : " << getAge() << std::endl;    
+}
