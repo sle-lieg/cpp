@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include <time.h>
 
+/**
+ * WRITE THE RANDNAME FUNCTION IN THE ZOMBIE CLASS 
+ * TO USE IT IN THE ZOMBIE CLASS CONSTRUCTOR
+ */
+
 ZombieHorde::ZombieHorde() : _hordeLength(10), _horde(new Zombie*[10])
 {
     for (int i = 0; i < 10; ++i)
@@ -16,14 +21,33 @@ ZombieHorde::ZombieHorde(int n) : _hordeLength(n), _horde(new Zombie*[n])
         _horde[i] = new Zombie(_randName(), "human");
     srand(time(NULL));
 }
-
 ZombieHorde::~ZombieHorde()
 {
     for (int i = 0; i < _hordeLength; ++i)
-        delete _horde[i];
-    
+        delete _horde[i];    
     delete _horde;
 }
+
+// ZombieHorde::ZombieHorde() : _hordeLength(10), _horde(10)
+// {
+//     for (int i = 0; i < 10; ++i)
+//         _horde[i] = new Zombie(_randName(), "human");
+//     srand(time(NULL));
+// }
+
+// ZombieHorde::ZombieHorde(int n) : _hordeLength(n), _horde(n)
+// {
+//     for (int i = 0; i < n; ++i)
+//         _horde[i] = new Zombie(_randName(), "human");
+//     srand(time(NULL));
+// }
+
+
+// ZombieHorde::~ZombieHorde()
+// {
+//     for (int i = 0; i < _hordeLength; ++i)
+//         delete _horde[i];    
+// }
 
 void    ZombieHorde::announce() const
 {
