@@ -1,7 +1,8 @@
 #include "Human.hpp"
+#include "Brain.hpp"
 #include <iostream>
 
-Human::Human() : _smart(Brain)
+Human::Human()
 {}
 
 Human::~Human()

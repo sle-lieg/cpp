@@ -12,7 +12,7 @@ class Human
         ~Human();
 
         std::string identify( void ) const;
-        Brain& getBrain() const;
+        const Brain& getBrain( void ) const;
 
     protected:
 
