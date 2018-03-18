@@ -9,13 +9,17 @@ class HumanA
     public:
         HumanA();
         HumanA(std::string name);
-        HumanA(std::string name, Weapon& weapon);        
+        HumanA(std::string name, const Weapon& weapon);
         ~HumanA();
 
         void attack( void ) const;
     
     private:
-        Weapon&     _weapon;
+
+        const Weapon*     _weapon;
+        // Weapon      _weapon;
+        // Weapon&     _weapon; //Impossible d'initialiser a null
+
         std::string _name;
 };
 
