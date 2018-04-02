@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/02 14:48:22 by sle-lieg          #+#    #+#             */
+/*   Updated: 2018/04/02 14:48:25 by sle-lieg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HUMAN_B_HPP
 # define HUMAN_B_HPP
 
@@ -7,16 +19,14 @@
 class HumanB
 {
     public:
-        HumanB();
         HumanB(std::string name);
-        HumanB(std::string name, Weapon& weapon);        
         ~HumanB();
 
         void attack( void ) const;
-        void setWeapon(Weapon& weapon);
+        void setWeapon(const Weapon& weapon);
 
     private:
-        Weapon*     _weapon;
+        const Weapon*     _weapon;
         std::string _name;
 };
 
