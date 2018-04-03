@@ -11,8 +11,10 @@ class Replacer
         Replacer(std::string fname, std::string s1, std::string s2);
         ~Replacer();
 
-        // std::string read();
+        void readFile( void );
+        void findAndReplace( void );
         void replace( void );
+        void closeFiles( void );
     
     private:
         std::string _filename;

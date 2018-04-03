@@ -5,11 +5,15 @@
 int main(int ac, char **av)
 {
     if (ac != 4)
-        throw "Error: 2 arguments needed..";
+    {
+        std::cout << "Error: missing arguments\nUsage: [file] [str to find] [str to write]" << std::endl;
+        return 0;
+    }
     try {
         Replacer p(av[1], av[2], av[3]);
-        p.replace();    
-    } catch(std::string &e) {
+        p.replace();
+        p.closeFiles();
+    } catch(char const* e) {
         std::cout << e << std::endl;
         return -1;
     }
