@@ -5,6 +5,12 @@
 #include <string>
 #include <fstream>
 
+class Exceptions
+{
+    public:
+        Exceptions();
+};
+
 class Replacer
 {
     public:
