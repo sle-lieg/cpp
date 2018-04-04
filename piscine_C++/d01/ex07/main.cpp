@@ -13,8 +13,8 @@ int main(int ac, char **av)
         Replacer p(av[1], av[2], av[3]);
         p.replace();
         p.closeFiles();
-    } catch(char const* e) {
-        std::cout << e << std::endl;
+    } catch(const Exceptions& e) {
+        e.handleError();
         return -1;
     }
     return 0;
