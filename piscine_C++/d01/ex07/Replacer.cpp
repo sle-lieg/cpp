@@ -23,9 +23,10 @@ Replacer::~Replacer()
 void Replacer::readFile()
 {
     std::string buffer;
+    const char  delim = '\n';
 
     while (std::getline(_ifs, buffer))
-        _sCopy += buffer;
+        _sCopy += buffer + delim;
     if (_ifs.bad())
         throw Exceptions("Error: an error occured while reading file " + _filename);
 }
