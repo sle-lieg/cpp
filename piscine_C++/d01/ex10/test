@@ -1,0 +1,58 @@
+#include "Kat.hpp"
+
+int main(int ac, const char **av)
+{
+    Kat kat(av);
+
+    if (ac == 1)
+        kat.readStdin();
+    else
+        kat.processArgs();
+
+    return 0;
+}
+#include "Kat.hpp"
+#include <iostream>
+
+Kat::Kat(char const **av) : _args(av)
+{
+    for (int i = 1; _args[i]; ++i)
+    {
+
+    }
+}
+
+Kat::~Kat()
+{}
+
+void    Kat::processArgs() const
+{
+    for (int i = 1; _args[i]; ++i)
+    {
+        if (_args[i] == "-")
+            readStdin();
+        else
+            readFile(_args[i]);
+    }
+}#ifndef KAT_HPP
+# define KAT_HPP
+
+#include <string>
+#include <fstream>
+
+class Kat
+{
+    public:
+        Kat(char const ** av);
+        ~Kat();
+
+        void    processArgs() const;
+        void    readStdin( void ) const;
+        void    readFile( std::string const fileName) const;
+
+    private:
+        char const      **_args;
+        std::ofstream   _ofs;
+};
+
+#endif
