@@ -5,10 +5,6 @@
 #include <string>
 #include <fstream>
 
-enum codeErr {
-    S1_EMPTY, 
-};
-
 class Exceptions
 {
     public:

@@ -6,6 +6,10 @@
         "initializer_list": "cpp",
         "new": "cpp",
         "stdexcept": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "string": "cpp",
+        "system_error": "cpp",
+        "__nullptr": "cpp",
+        "algorithm": "cpp"
     }
 }

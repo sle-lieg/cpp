@@ -3,12 +3,6 @@
 
 #include <string>
 
-enum {
-    meleeAttack,
-    rangedAttack,
-    intimidatingShout
-};
-
 class Human {
     private:
         void meleeAttack(std::string const & target);
