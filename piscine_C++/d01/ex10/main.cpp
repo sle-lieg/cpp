@@ -1,12 +1,8 @@
 #include "Kat.hpp"
 
-int main(int ac, const char **av)
+int main(int ac, char const **av)
 {
-    std::string args[ac];
-    for (int i = 0; i < ac; ++i)
-        args[i] = av[i];
-    
-    Kat kat(args);
+    Kat kat(av, ac);
 
     if (ac == 1)
         kat.readStdin();
