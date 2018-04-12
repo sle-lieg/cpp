@@ -13,28 +13,6 @@ Fixed::Fixed(Fixed const & T)
     *this = T;
 }
 
-// Fixed::Fixed( int const val) : _value(val)
-// {
-//     std::cout << "Int constructor called" << std::endl;
-// }
-
-Fixed::Fixed( int const val) : _value(val)
-{
-    std::cout << "Int constructor called" << std::endl;
-    _value <<= _nbFractBits;
-}
-
-// Fixed::Fixed( float const val) : _value(val)
-// {
-//     std::cout << "Float constructor called" << std::endl;    
-// }
-
-Fixed::Fixed( float const val)
-{
-    std::cout << "Float constructor called" << std::endl;
-    _value = static_cast<int>(val);
-}
-
 Fixed::~Fixed()
 {
     std::cout << "Default destructor called" << std::endl;    
