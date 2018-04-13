@@ -4,6 +4,9 @@
 #include <fstream>
 #include <iostream>
 
+#define FRACT_BITS 8
+#define FACTOR (1 << FRACT_BITS)
+
 class Fixed
 {
     public:
@@ -15,24 +18,33 @@ class Fixed
 
         Fixed&  operator=( Fixed const & );
         
-        bool    operator>( Fixed const & );
-        bool    operator<( Fixed const & );
-        bool    operator>=( Fixed const & );
-        bool    operator<=( Fixed const & );
-        bool    operator==( Fixed const & );
-        bool    operator!=( Fixed const & );
+        bool    operator>( Fixed const & ) const;
+        bool    operator<( Fixed const & ) const;
+        bool    operator>=( Fixed const & ) const;
+        bool    operator<=( Fixed const & ) const;
+        bool    operator==( Fixed const & ) const;
+        bool    operator!=( Fixed const & ) const;
 
-        Fixed&  operator>>( int const );
-
+        Fixed&  operator++( void );
+        Fixed   operator++( int );
+        Fixed&  operator--( void );
+        Fixed   operator--( int );
+        Fixed&  operator>>( int const ) const;
 
         int     getRawBits( void ) const;
         void    setRawBits( int const raw );
         float   toFloat( void ) const;
         int     toInt( void ) const;
 
+        static Fixed& min(Fixed &, Fixed &);
+        static Fixed  const & min(Fixed const &, Fixed const &);
+        static Fixed& max(Fixed &, Fixed &);
+        static Fixed  const & max(Fixed const &, Fixed const &);
+
     private:
-        static int const    _nbFractBits = 8;
-        int                 _value;
+        static int const    _nbFractBits = FRACT_BITS;
+        int                 _rawValue;
+    
 };
 
 std::ostream & operator<<( std::ostream & flux, Fixed const & T );
