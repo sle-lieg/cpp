@@ -7,8 +7,7 @@
  ** **********************************************************************/
 
 ScavTrap::ScavTrap() :
-    _name("FR4G_TP"), _hitPoints(100), _maxHitPoints(100), _energyPoints(50), _maxEnergyPoints(50),
-    _level(1), _meleeAttackDmg(20), _rangedAttackDmg(15), _armorDmgReduction(3)
+    ClapTrap::ClapTrap()
 {
     _challenge[0] = &ScavTrap::firstToDie;
     _challenge[1] = &ScavTrap::runFaster;
@@ -21,8 +20,7 @@ ScavTrap::ScavTrap() :
 }
 
 ScavTrap::ScavTrap(std::string name) :
-    _name(name), _hitPoints(100), _maxHitPoints(100), _energyPoints(50), _maxEnergyPoints(50),
-    _level(1), _meleeAttackDmg(20), _rangedAttackDmg(15), _armorDmgReduction(3)
+    ClapTrap::ClapTrap(name)
 {
     _challenge[0] = &ScavTrap::firstToDie;
     _challenge[1] = &ScavTrap::runFaster;
@@ -35,9 +33,7 @@ ScavTrap::ScavTrap(std::string name) :
 }
 
 ScavTrap::ScavTrap(ScavTrap const & src) :
-    _name(src._name), _hitPoints(src._hitPoints), _maxHitPoints(src._maxHitPoints), _energyPoints(src._energyPoints),
-    _maxEnergyPoints(src._maxEnergyPoints), _level(src._level), _meleeAttackDmg(src._meleeAttackDmg),
-    _rangedAttackDmg(src._rangedAttackDmg), _armorDmgReduction(src._armorDmgReduction)
+    ClapTrap(src)
 {
     _challenge[0] = &ScavTrap::firstToDie;
     _challenge[1] = &ScavTrap::runFaster;
@@ -78,33 +74,6 @@ ScavTrap&   ScavTrap::operator=(ScavTrap const & src)
 /** **********************************************************************
  ** ************************ MEMBER FUNCTIONS ****************************
  ** **********************************************************************/
-
-void    ScavTrap::rangedAttack(std::string const & target) const
-{
-    std::cout << _name << ": 'Get ready for some Fragtrap face time!.'" <<std::endl;
-    std::cout << "FR4G_TP " << _name << " launched a rocket on " << target << ". " << _rangedAttackDmg << " damage inflicted." << std::endl;
-}
-
-void    ScavTrap::meleeAttack(std::string const & target) const
-{
-    std::cout << _name << ": 'Take that mofer thuker !!'" << std::endl;
-    std::cout << "FR4G_TP " << _name << " kicked " << target << ". " << _meleeAttackDmg << " damage inflicted." << std::endl;
-}
-
-void    ScavTrap::takeDamage(unsigned int amount)
-{
-    std::cout << _name << "I think i got hit !" << std::endl;
-    std::cout << "FR4G_TP " << _name << " received " << (amount - _armorDmgReduction) << " damages. " << std::endl;
-    if (amount > _armorDmgReduction)
-        _hitPoints = (amount - _armorDmgReduction) > _hitPoints ? 0 : _hitPoints - (amount - _armorDmgReduction);
-}
-
-void    ScavTrap::beRepaired(unsigned int amount)
-{
-    std::cout << _name << "'COME ON, GIVE IT TO ME !!!!'" << std::endl;
-    std::cout << "FR4G_TP " << _name << " healed " << amount << " Hit Points. " << std::endl;        
-    _hitPoints = (_hitPoints + amount) > _maxHitPoints ? _maxHitPoints : _hitPoints + amount;
-}
 
 void    ScavTrap::challengeNewcomer(std::string const & target)
 {

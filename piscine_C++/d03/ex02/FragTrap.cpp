@@ -7,8 +7,7 @@
  ** **********************************************************************/
 
 FragTrap::FragTrap() :
-    _name("FR4G_TP"), _hitPoints(100), _maxHitPoints(100), _energyPoints(100), _maxEnergyPoints(100),
-    _level(1), _meleeAttackDmg(30), _rangedAttackDmg(20), _armorDmgReduction(5)
+    ClapTrap::ClapTrap()
 {
     _attacks[0] = &FragTrap::funzerker;
     _attacks[1] = &FragTrap::laserInferno;
@@ -16,13 +15,12 @@ FragTrap::FragTrap() :
     _attacks[3] = &FragTrap::senselessSacrifice;
     _attacks[4] = &FragTrap::mechromagician;
     
-    std::cout << "Starting boot-up sequence... " << std::endl;
+    std::cout << "FragTrap " << _name << " starting boot-up sequence... " << std::endl;
     std::cout << "Directive one: Protect humanity! Directive two: Obey Jack at all costs. Directive three: Dance!" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) :
-    _name(name), _hitPoints(100), _maxHitPoints(100), _energyPoints(100), _maxEnergyPoints(100),
-    _level(1), _meleeAttackDmg(30), _rangedAttackDmg(20), _armorDmgReduction(5)
+    ClapTrap::ClapTrap(name)
 {
     _attacks[0] = &FragTrap::funzerker;
     _attacks[1] = &FragTrap::laserInferno;
@@ -30,14 +28,12 @@ FragTrap::FragTrap(std::string name) :
     _attacks[3] = &FragTrap::senselessSacrifice;
     _attacks[4] = &FragTrap::mechromagician;
     
-    std::cout << "Starting boot-up sequence... " << std::endl;
+    std::cout << "FragTrap " << _name << "  starting boot-up sequence... " << std::endl;
     std::cout << "Directive one: Protect humanity! Directive two: Obey Jack at all costs. Directive three: Dance!" << std::endl;
 }
 
 FragTrap::FragTrap(FragTrap const & src) :
-    _name(src._name), _hitPoints(src._hitPoints), _maxHitPoints(src._maxHitPoints), _energyPoints(src._energyPoints),
-    _maxEnergyPoints(src._maxEnergyPoints), _level(src._level), _meleeAttackDmg(src._meleeAttackDmg),
-    _rangedAttackDmg(src._rangedAttackDmg), _armorDmgReduction(src._armorDmgReduction)
+    ClapTrap::ClapTrap(src)
 {
     _attacks[0] = &FragTrap::funzerker;
     _attacks[1] = &FragTrap::laserInferno;
@@ -51,7 +47,7 @@ FragTrap::FragTrap(FragTrap const & src) :
 
 FragTrap::~FragTrap()
 {
-    std::cout << "Holy crap, i can't feel my gearings anymore ... HEEEEELLLPPPFWOHFWPHFWofhwohfwc tzz tzzzz tzzzz..." << std::endl;
+    std::cout << "FragTrap " << _name << " destruction." << std::endl;
 }
 
 /** **********************************************************************
@@ -79,41 +75,13 @@ FragTrap&   FragTrap::operator=(FragTrap const & src)
  ** ************************ MEMBER FUNCTIONS ****************************
  ** **********************************************************************/
 
-void    FragTrap::rangedAttack(std::string const & target) const
-{
-    std::cout << "Take two bullets, then call me in the morning." <<std::endl;
-    std::cout << "FR4G_TP " << _name << " shot " << target << ". " << _rangedAttackDmg << " damage inflicted." << std::endl;
-}
-
-void    FragTrap::meleeAttack(std::string const & target) const
-{
-    std::cout << "Ready for the PUNCHLine ??? ... proud of this one ..." << std::endl;
-    std::cout << "FR4G_TP " << _name << " punched " << target << ". " << _meleeAttackDmg << " damage inflicted." << std::endl;
-}
-
-void    FragTrap::takeDamage(unsigned int amount)
-{
-    std::cout << "OUUUCCHHHYAAA !... It hurts !" << std::endl;
-    std::cout << "FR4G_TP " << _name << " received " << (amount - _armorDmgReduction) << " damages. " << std::endl;
-    if (amount > _armorDmgReduction)
-        _hitPoints = (amount - _armorDmgReduction) > _hitPoints ? 0 : _hitPoints - (amount - _armorDmgReduction);
-}
-
-void    FragTrap::beRepaired(unsigned int amount)
-{
-    std::cout << "Oh gosh, that feels good babe !!!!" << std::endl;
-    std::cout << "FR4G_TP " << _name << " healed " << amount << " Hit Points. " << std::endl;        
-    _hitPoints = (_hitPoints + amount) > _maxHitPoints ? _maxHitPoints : _hitPoints + amount;
-}
-
 void    FragTrap::vaulthunter_dot_exe(std::string const & target)
 {
     if (_energyPoints >= 25)
     {
         std::size_t randIndex = rand() % 5;
 
-        std::cout << "Let's play roulette !!!" << std::endl;    
-        // std::cout << "Random index: " << randIndex << std::endl;
+        std::cout << "Let's play roulette !!!" << std::endl;
         ((*this).*_attacks[randIndex])(target);
         _energyPoints -= 25;
     }
