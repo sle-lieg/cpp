@@ -9,13 +9,13 @@ class ScavTrap : public ClapTrap
 {
     public:
         ScavTrap( void );
-        ScavTrap( std::string name );
-        ScavTrap( ScavTrap const & );
-        ~ScavTrap( void );
+        ScavTrap(std::string name);
+        ScavTrap(ScavTrap const &);
+        ~ScavTrap(void);
 
-        ScavTrap& operator=( ScavTrap const & );
+        ScavTrap& operator=(ScavTrap const &);
 
-        void    challengeNewcomer( std::string const & target ) const;
+        void    challengeNewcomer(std::string const & target) const;
         void    firstToDie( void ) const;
         void    runFaster( void ) const;
         void    rubiksChallenge( void ) const;
@@ -23,7 +23,7 @@ class ScavTrap : public ClapTrap
         void    collectAllStuff( void ) const;
 
     private:
-        typedef void ( ScavTrap::*randChallenges )( void ) const;
+        typedef void (ScavTrap::*randChallenges)( void ) const;      
         randChallenges  _challenge[5];
 };
 

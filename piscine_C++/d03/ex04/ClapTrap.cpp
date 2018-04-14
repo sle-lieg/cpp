@@ -82,3 +82,8 @@ void    ClapTrap::beRepaired(unsigned int amount)
     std::cout << "FR4G_TP " << _name << " healed " << amount << " Hit Points. " << std::endl;        
     _hitPoints = (_hitPoints + amount) > _maxHitPoints ? _maxHitPoints : _hitPoints + amount;
 }
+
+std::string ClapTrap::getName( void ) const
+{
+    return _name;
+}
