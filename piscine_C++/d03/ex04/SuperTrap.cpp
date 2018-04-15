@@ -10,12 +10,12 @@ SuperTrap::SuperTrap() :
     FragTrap(), NinjaTrap()
 {
     _hitPoints = FragTrap::_hitPoints;
-    _maxHitPoints = 60;
-    _energyPoints = 120;
-    _maxEnergyPoints = 120;
-    _meleeAttackDmg = 60;
-    _rangedAttackDmg = 5;
-    _armorDmgReduction = 0;
+    _maxHitPoints = FragTrap::_maxHitPoints;
+    _energyPoints = NinjaTrap::_energyPoints;
+    _maxEnergyPoints = NinjaTrap::_maxEnergyPoints;
+    _meleeAttackDmg = NinjaTrap::_meleeAttackDmg;
+    _rangedAttackDmg = FragTrap::_rangedAttackDmg;
+    _armorDmgReduction = FragTrap::_armorDmgReduction;
     
     std::cout << "Starting boot-up sequence... " << std::endl;
     std::cout << "Ninjaaaaaa !" << std::endl;
@@ -24,14 +24,14 @@ SuperTrap::SuperTrap() :
 SuperTrap::SuperTrap(std::string name) :
     FragTrap::FragTrap(name), NinjaTrap(name)
 {
-    _hitPoints = 60;
-    _maxHitPoints = 60;
-    _energyPoints = 120;
-    _maxEnergyPoints = 120;
-    _meleeAttackDmg = 60;
-    _rangedAttackDmg = 5;
-    _armorDmgReduction = 0;
-    
+    _hitPoints = FragTrap::_hitPoints;
+    _maxHitPoints = FragTrap::_maxHitPoints;
+    _energyPoints = NinjaTrap::_energyPoints;
+    _maxEnergyPoints = NinjaTrap::_maxEnergyPoints;
+    _meleeAttackDmg = NinjaTrap::_meleeAttackDmg;
+    _rangedAttackDmg = FragTrap::_rangedAttackDmg;
+    _armorDmgReduction = FragTrap::_armorDmgReduction;
+
     std::cout << "Starting boot-up sequence... " << std::endl;
     std::cout << _name << " Ninjaaaaaa !" << std::endl;
 }
@@ -80,3 +80,13 @@ SuperTrap&   SuperTrap::operator=(SuperTrap const & src)
 /** **********************************************************************
  ** ************************ MEMBER FUNCTIONS ****************************
  ** **********************************************************************/
+
+void        SuperTrap::rangedAttack(std::string const & target) const
+{
+    FragTrap::rangedAttack(target);
+}
+
+void        SuperTrap::meleeAttack(std::string const & target) const
+{
+    NinjaTrap::meleeAttack(target);
+}

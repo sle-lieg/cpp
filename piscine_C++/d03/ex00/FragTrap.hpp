@@ -19,14 +19,16 @@ class FragTrap
         void    takeDamage(unsigned int amount);
         void    beRepaired(unsigned int amount);
         void    vaulthunter_dot_exe(std::string const & target);
+
+    private:
         void    funzerker(std::string const & target) const;
         void    laserInferno(std::string const & target) const;
         void    oneShotWonder(std::string const & target) const;
         void    senselessSacrifice(std::string const & target) const;
         void    mechromagician(std::string const & target) const;
 
-    private:
         typedef void (FragTrap::*randAttacks)(std::string const &) const;      
+
         randAttacks     _attacks[5];
         std::string     _name;
         unsigned int    _hitPoints;

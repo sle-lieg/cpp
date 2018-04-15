@@ -16,25 +16,9 @@ class SuperTrap : public FragTrap, public NinjaTrap
         ~SuperTrap( void );
 
         SuperTrap& operator=( SuperTrap const & );
+
+        void        rangedAttack(std::string const & target) const;
+        void        meleeAttack(std::string const & target) const;
 };
 
 #endif
-
-// #include <iostream>
-using namespace std;
-class Enfant //classe dérivée
-{
-    public: void Marcher(); //il marche
-    void Rire(); //il rit
-    protected: private: 
-};
-class Oiseau
-{
-    public: void Chanter(); //il chante
-    void Voler(); //il vole
-};
-//la classe Cherubin hérite d’Enfant et de Oiseau :
-class Cherubin : public Enfant, public Oiseau
-{
-
-};

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-class FragTrap : public ClapTrap
+class FragTrap : public virtual ClapTrap
 {
     public:
         FragTrap( void );
@@ -14,17 +14,16 @@ class FragTrap : public ClapTrap
         ~FragTrap(void);
 
         FragTrap& operator=(FragTrap const &);
-    
         void    vaulthunter_dot_exe(std::string const & target);
+
+    protected:
+        typedef void (FragTrap::*randAttacks)(std::string const &) const;      
+        randAttacks     _attacks[5];
         void    funzerker(std::string const & target) const;
         void    laserInferno(std::string const & target) const;
         void    oneShotWonder(std::string const & target) const;
         void    senselessSacrifice(std::string const & target) const;
         void    mechromagician(std::string const & target) const;
-
-    private:
-        typedef void (FragTrap::*randAttacks)(std::string const &) const;      
-        randAttacks     _attacks[5];
 };
 
 #endif

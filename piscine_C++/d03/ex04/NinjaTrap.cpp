@@ -39,13 +39,13 @@ NinjaTrap::NinjaTrap(std::string name) :
 NinjaTrap::NinjaTrap(NinjaTrap const & src) :
     ClapTrap(src)
 {
-    _hitPoints = 60;
-    _maxHitPoints = 60;
-    _energyPoints = 120;
-    _maxEnergyPoints = 120;
-    _meleeAttackDmg = 60;
-    _rangedAttackDmg = 5;
-    _armorDmgReduction = 0;
+    _hitPoints = src._hitPoints;
+    _maxHitPoints = src._maxHitPoints;
+    _energyPoints = src._energyPoints;
+    _maxEnergyPoints = src._maxEnergyPoints;
+    _meleeAttackDmg = src._meleeAttackDmg;
+    _rangedAttackDmg = src._rangedAttackDmg;
+    _armorDmgReduction = src._armorDmgReduction;
 
     std::cout << "Starting cloning sequence... " << std::endl;
     std::cout << "Ninjaaaaaa !" << std::endl;
