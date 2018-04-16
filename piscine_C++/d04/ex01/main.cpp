@@ -4,21 +4,25 @@
 #include "Enemy.hpp"
 #include "SuperMutant.hpp"
 #include "RadScorpion.hpp"
+#include "Character.hpp"
 
 int main()
 {
-    // PlasmaRifle g1;
+    Character   hero("Clad");
+    PlasmaRifle g1;
     // PowerFist   g2;
     // Enemy e1(999, "Human");
     // SuperMutant boss;
-    RadScorpion  boss2;
+    // RadScorpion  boss2;
 
-    std::cout << boss2.getType() << std::endl;
-    std::cout << boss2.getHP() << std::endl;
     
-    boss2.takeDamage(100);
 
-    std::cout << boss2.getHP() << std::endl;
+    // std::cout << boss2.getType() << std::endl;
+    // std::cout << boss2.getHP() << std::endl;
+    
+    // boss2.takeDamage(100);
+
+    // std::cout << boss2.getHP() << std::endl;
     // std::cout << g1.getName() << std::endl;
     // std::cout << g1.getAPCost() << std::endl;
     // std::cout << g1.getDamage() << std::endl;
