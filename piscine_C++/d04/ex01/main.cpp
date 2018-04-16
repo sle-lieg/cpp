@@ -1,0 +1,31 @@
+#include "AWeapon.hpp"
+#include "PlasmaRifle.hpp"
+#include "PowerFist.hpp"
+#include "Enemy.hpp"
+#include "SuperMutant.hpp"
+#include "RadScorpion.hpp"
+
+int main()
+{
+    // PlasmaRifle g1;
+    // PowerFist   g2;
+    // Enemy e1(999, "Human");
+    // SuperMutant boss;
+    RadScorpion  boss2;
+
+    std::cout << boss2.getType() << std::endl;
+    std::cout << boss2.getHP() << std::endl;
+    
+    boss2.takeDamage(100);
+
+    std::cout << boss2.getHP() << std::endl;
+    // std::cout << g1.getName() << std::endl;
+    // std::cout << g1.getAPCost() << std::endl;
+    // std::cout << g1.getDamage() << std::endl;
+    // g1.attack();
+    // std::cout << g2.getName() << std::endl;
+    // std::cout << g2.getAPCost() << std::endl;
+    // std::cout << g2.getDamage() << std::endl;
+    // g2.attack();
+    return (0);
+}
