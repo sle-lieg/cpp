@@ -17,9 +17,13 @@ class Squad : public ISquad
         int             push(ISpaceMarine*);
 
     private:
+        void    destroySquad();
+        void    cloneSquad();
+        bool    isInSquad(ISpaceMarine*) const;
+
         ISpaceMarine* const _firstUnit; // const pointer to the first unit of the squad
         ISpaceMarine*       _lastUnit;  // pointer to the last unit
-        int                 _count;
+        int                 _nbUnits;
 };
 
 #endif
