@@ -30,22 +30,22 @@ void    Phonebook::add()
     }
 
     Contact     &curContact = _contacts[idContact];
-    std::string data("");
+    std::string data;
 
     do {
         std::cout << "First name: ";
         getline(std::cin, data);
-        if (data == "")
+        if (data.empty())
             std::cout << "First name invalid." << std::endl;
-    } while (data == "");
+    } while (data.empty());
     curContact.setFirstName(data);
 
     do {
         std::cout << "Last name: ";
         getline(std::cin, data);
-        if (data == "")
+        if (data.empty())
             std::cout << "Last name invalid." << std::endl;
-    } while (data == "");
+    } while (data.empty());
     curContact.setLastName(data);
 
     std::cout << "Nickname: ";

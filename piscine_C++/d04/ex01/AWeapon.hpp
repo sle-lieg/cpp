@@ -5,13 +5,15 @@
 
 class AWeapon
 {
+    private:
+        AWeapon();
+
     protected:
         std::string _name;
         int         _apCost;
         int         _damage;
 
     public:
-        AWeapon(void);
         AWeapon(std::string const & name, int apcost, int damage);
         AWeapon(AWeapon const &);
         virtual ~AWeapon();

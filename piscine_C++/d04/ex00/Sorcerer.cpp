@@ -6,9 +6,7 @@
  * **********************************
  */
 Sorcerer::Sorcerer()
-{
-    throw "Error: missing NAME and/or TITLE";
-}
+{}
 
 Sorcerer::Sorcerer(std::string const name, std::string const title) :
     _name(name), _title(title)

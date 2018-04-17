@@ -5,10 +5,7 @@
  ***********************************************/
 
 AWeapon::AWeapon()
-{
-    std::string err("ERROR Constructor: need string NAME, int APCOST and int DAMAGE");
-    throw err;
-}
+{}
 
 AWeapon::AWeapon(std::string const & name, int apcost, int damage) :
     _name(name), _apCost(apcost), _damage(damage)

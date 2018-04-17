@@ -8,8 +8,34 @@
 
 int main()
 {
-    Character   hero("Clad");
-    PlasmaRifle g1;
+    Character* zaz = new Character("zaz");
+    std::cout << *zaz;
+    // Enemy* b = nullptr;
+    Enemy* b = new RadScorpion();
+    AWeapon* pr = new PlasmaRifle();
+    AWeapon* pf = nullptr;
+    // AWeapon* pf = new PowerFist();
+    zaz->equip(pr);
+    std::cout << *zaz;
+    zaz->equip(pf);
+    zaz->attack(b);
+    std::cout << *zaz;
+    // zaz->equip(pr);
+    std::cout << *zaz;
+    zaz->attack(b);
+    std::cout << *zaz;
+    zaz->attack(b);
+    std::cout << *zaz;
+    return 0;
+    // Character   hero("Clad");
+    // Character   soldier("Soldy");
+    // PlasmaRifle gun;
+    // PowerFist   fist;
+
+    // hero.equip(&gun);
+    // soldier = hero;
+    // soldier.equip(&fist);
+
     // PowerFist   g2;
     // Enemy e1(999, "Human");
     // SuperMutant boss;

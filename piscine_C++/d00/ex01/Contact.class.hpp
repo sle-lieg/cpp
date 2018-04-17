@@ -9,6 +9,7 @@ class Contact {
         void    displayTruncContact(int index) const;
         void    displayFullContact() const;
         void    displayData(std::string data) const;
+
         void    setFirstName(std::string data);
         void    setLastName(std::string data);
         void    setNickName(std::string data);
@@ -21,7 +22,7 @@ class Contact {
         void    setUnderwearColor(std::string data);
         void    setDarkestSecret(std::string data);
         
-    protected:
+    private:
         std::string _firstName;
         std::string _lastName;
         std::string _nickName;

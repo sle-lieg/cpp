@@ -1,7 +1,3 @@
-/**
- * TODO: Ajouter header 42
- */
-
 #include <iostream>
 
 int main(int ac, char **av)
@@ -14,4 +10,5 @@ int main(int ac, char **av)
             putchar(toupper(av[i][j]));
     }
     std::cout << std::endl;
+    return (0);
 }

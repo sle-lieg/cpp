@@ -1,10 +1,6 @@
 #include <iostream>
 #include "Contact.class.hpp"
 
-/**
- * ****** CLASS CONTACT *******
- */
-
 Contact::Contact() : _firstName(""), _lastName(""), _nickName("")
 {}
 
