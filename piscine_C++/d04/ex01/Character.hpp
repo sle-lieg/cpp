@@ -7,13 +7,7 @@
 
 class Character
 {
-    private:
-        std::string _name;
-        int         _actionPoints;
-        AWeapon*    _weapon;
-
     public:
-        Character();
         Character(std::string const & name);
         Character(Character const &);
         ~Character();
@@ -27,6 +21,13 @@ class Character
         std::string const   getWeaponName() const;
         AWeapon*            getWeapon() const;
         int                 getAP() const;
+
+    private:
+        Character();
+
+        std::string _name;
+        int         _actionPoints;
+        AWeapon*    _weapon;
 };
 
 std::ostream& operator<<(std::ostream & flux, Character const &);

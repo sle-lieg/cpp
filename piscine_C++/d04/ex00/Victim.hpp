@@ -6,18 +6,20 @@
 class Victim
 {
     public:
-        Victim(void);
         Victim(std::string name);
         Victim(Victim const &);
-        virtual ~Victim(void);
+        virtual ~Victim();
 
         Victim& operator=(Victim const &);
 
-        std::string     getName(void) const;
-        virtual void    getPolymorphed(void) const;
+        std::string     getName() const;
+        virtual void    getPolymorphed() const;
 
     protected:
         std::string _name;
+
+    private:
+        Victim();
 };
 
 std::ostream& operator<<(std::ostream & flux, Victim const &);

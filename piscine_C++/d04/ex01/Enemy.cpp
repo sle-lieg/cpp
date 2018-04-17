@@ -4,10 +4,7 @@
  * *************** CONSTRUCTORS ****************
  ***********************************************/
 Enemy::Enemy()
-{
-    std::string err("ERROR Constructor: need int HP, string TYPE.");
-    throw err;
-}
+{}
 
 Enemy::Enemy(int hp, std::string const & type) :
     _hitPoints(hp), _type(type)

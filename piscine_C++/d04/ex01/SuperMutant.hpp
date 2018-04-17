@@ -13,7 +13,7 @@ class SuperMutant : public Enemy
 
         SuperMutant& operator=(SuperMutant const &);
         
-        void    takeDamage(int);
+        void    takeDamage(int damage);
 };
 
 #endif

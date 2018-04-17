@@ -6,11 +6,7 @@
  * **********************************
  */
 Victim::Victim()
-{
-    std::string egr("Error constructor: miss NAME argument");
-
-    throw egr;
-}
+{}
 
 Victim::Victim(std::string name) :
     _name(name)

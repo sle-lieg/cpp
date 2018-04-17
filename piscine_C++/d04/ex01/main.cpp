@@ -9,24 +9,63 @@
 int main()
 {
     Character* zaz = new Character("zaz");
-    std::cout << *zaz;
-    // Enemy* b = nullptr;
     Enemy* b = new RadScorpion();
     AWeapon* pr = new PlasmaRifle();
-    AWeapon* pf = nullptr;
-    // AWeapon* pf = new PowerFist();
+    
     zaz->equip(pr);
-    std::cout << *zaz;
-    zaz->equip(pf);
     zaz->attack(b);
-    std::cout << *zaz;
+    zaz->attack(b);
+    zaz->attack(b);
+    zaz->attack(b); // *b meurt, il est free donc dans attack
+    zaz->attack(b);
+
+    // Character* zaz = new Character("zaz");
+    // Character* clad = zaz;
+
+    // std::cout << *zaz;
+
+    // Enemy* b = new RadScorpion();
+    // Enemy* c = new SuperMutant();
+    // Enemy* d = nullptr;
+    
+    // AWeapon* pr = new PlasmaRifle();
+    // AWeapon* pf = new PowerFist();
+    // AWeapon* np = nullptr;
+    
     // zaz->equip(pr);
-    std::cout << *zaz;
-    zaz->attack(b);
-    std::cout << *zaz;
-    zaz->attack(b);
-    std::cout << *zaz;
-    return 0;
+    // std::cout << *zaz;
+    // zaz->equip(pf);
+    // zaz->attack(b);
+    // std::cout << *zaz;
+    // zaz->equip(pr);
+    // std::cout << *zaz;
+    // zaz->attack(b);
+    // std::cout << *zaz;
+    // zaz->attack(b);
+    // std::cout << *zaz;
+    // zaz->equip(np);
+    // std::cout << *zaz;
+    // zaz->attack(c);
+    // zaz->attack(d);
+
+    // clad->equip(pr);
+    // std::cout << *clad;
+    // clad->equip(pf);
+    // clad->attack(b);
+    // std::cout << *clad;
+    // clad->equip(pr);
+    // std::cout << *clad;
+    // clad->attack(b);
+    // std::cout << *clad;
+    // clad->attack(b);
+    // std::cout << *clad;
+    // clad->attack(d);
+ 
+
+    // clad->equip(np);
+    // std::cout << *clad;
+
+    // clad->attack(c);
     // Character   hero("Clad");
     // Character   soldier("Soldy");
     // PlasmaRifle gun;

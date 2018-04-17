@@ -5,10 +5,7 @@
  * ******************** CONSTRUCTORS ********************
 ********************************************************/
 Character::Character()
-{
-    std::string error("Error constructor: missing string NAME");
-    throw error;
-}
+{}
 
 Character::Character(std::string const & name) :
     _name(name), _actionPoints(40), _weapon(nullptr)
@@ -70,7 +67,10 @@ void Character::attack(Enemy* enemy)
             _weapon->attack();
             enemy->takeDamage(_weapon->getDamage());
             if (enemy->getHP() == 0)
+            {
                 delete enemy;
+                enemy = nullptr;
+            }
             _actionPoints -= _weapon->getAPCost();
         }
         else
