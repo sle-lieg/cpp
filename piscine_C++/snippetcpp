@@ -1,0 +1,61 @@
+	"Coplien class": {
+		"prefix": "class",
+		"body": [
+			"class ${TM_FILENAME_BASE}",
+			"{",
+			"     public:",
+			"        ${TM_FILENAME_BASE}();",
+			"        ${TM_FILENAME_BASE}(${TM_FILENAME_BASE} const &);",
+			"        ~${TM_FILENAME_BASE}();",
+			"",
+			"        ${TM_FILENAME_BASE}& operator=(${TM_FILENAME_BASE} const &);",
+			"",
+			"};"
+		],
+		"description": "Insert the minimal code for coplien class with filename as class name"
+	},
+	"cpp presentation": {
+		"prefix": "parts",
+		"body": [
+			"/********************************************************",
+			" * ******************** CONSTRUCTORS ********************",
+			"********************************************************/",
+			"$1",
+			"",
+			"/********************************************************",
+			" * ********************* DESTRUCTOR *********************",
+			"********************************************************/",
+			"$2",
+			"",
+			"/********************************************************",
+			" * ********************* OPERATORS **********************",
+			"********************************************************/",
+			"$3",
+			"",
+			"/********************************************************",
+			" * ****************** MEMBER FUNCTIONS ******************",
+			"********************************************************/",
+		],
+		"description": "Presentation for a .cpp file"
+	}
+}
+
+SHORTCUT
+{
+  "key": "ctrl+shift+x",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus",
+  "args": {
+    "langId": "cpp",
+    "name": "cpp presentation"
+  }
+},
+{
+  "key": "ctrl+shift+c",
+  "command": "editor.action.insertSnippet",
+  "when": "editorTextFocus",
+  "args": {
+    "langId": "cpp",
+    "name": "Coplien class"
+  }
+}

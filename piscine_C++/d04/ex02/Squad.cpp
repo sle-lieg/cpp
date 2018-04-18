@@ -8,8 +8,6 @@ Squad::Squad() :
 {}
 
 Squad::Squad(Squad const & squad) :
-    // _firstUnit(new ISpaceMarine(*(squad.getUnit(0)))),
-    // _lastUnit(new ISpaceMarine(*(squad.getUnit(squad.getCount())))),
     _firstUnit(nullptr), _lastUnit(nullptr), _nbUnits(squad.getCount())
 {
     //COPY ALL ELEMENTS OF ARMY
@@ -28,7 +26,7 @@ Squad::~Squad()
 /********************************************************
  * ********************* OPERATORS **********************
 ********************************************************/
-Squad& Squad::operator=(Squad const &squad)
+Squad& Squad::operator=(Squad const & squad)
 {
     // DELETE ELEMENTS IN THIS->ARMY IF ANY
     // CLONE THE ELEMENTS FROM squad
@@ -49,8 +47,13 @@ void    Squad::destroySquad()
 
     while (tmp)
     {
+        if (tmp->getNbSquad() != 1)
+        {
+            tmp->decrNbSquads();
+            continue;
+        }
         toDelete = tmp;
-        tmp = tmp->next;
+        tmp = tmp->getNext();
         delete toDelete;
     }
     _firstUnit = nullptr;
@@ -60,21 +63,26 @@ void    Squad::destroySquad()
 
 void    Squad::cloneSquad(Squad const & squad)
 {
+    ISpaceMarine* tmp(nullptr);
+    ISpaceMarine* cpySquad(nullptr);
+
     if (!squad.getCount())
         return;
-    _firstUnit = new ISpaceMarine(*(squad.getUnit(0)));
-    _lastUnit = new ISpaceMarine(*(squad.getUnit(squad.getCount())));
 
-    ISpaceMarine* tmp(_firstUnit);
-    ISpaceMarine* cpySquad(nullptr);    
+    tmp = squad.getUnit(squad.getCount());
+    _lastUnit = tmp->clone();
 
-    while (tmp && tmp->next)
+    tmp = squad.getUnit(0);
+    _firstUnit = tmp->clone();
+
+    while (tmp && tmp->getNext())
     {
-        cpySquad = tmp->next;        
-        tmp->next = cpySquad->clone();
-        tmp = tmp->next;
+        tmp->incrNbSquads();
+        cpySquad = tmp->getNext();
+        tmp->setNext(cpySquad->clone());
+        tmp = tmp->getNext();
     }
-    tmp->next = _lastUnit;
+    tmp->setNext(_lastUnit);
 }
 
 int Squad::getCount() const
@@ -89,43 +97,41 @@ ISpaceMarine*   Squad::getUnit(int unit) const
     ISpaceMarine* tmp(_firstUnit);
 
     for (int i = 0; i < unit; ++i)
-        tmp = tmp->next;
+        tmp = tmp->getNext();
     return tmp;
 }
 
 int Squad::push(ISpaceMarine* unit)
 {
     // ADD A UNIT TO _SQUAD
-    // INCRMENT _nbUnits
-    ISpaceMarine* cpyUnit(unit->clone());
-
-    if (!_firstUnit)
+    // INCREMENT _nbUnits
+    // INCREMENT _nbSquads    
+    if (isInSquad(unit))
     {
-        _firstUnit = cpyUnit;
-        _lastUnit = cpyUnit;
+        std::cout << "Unit already in the squad." << std::endl;
+        return _nbUnits;
     }
+    if (!_firstUnit)
+        _firstUnit = _lastUnit = unit;
     else
     {
-        if (isInSquad(unit))
-        {
-            std::cout << "Unit already in the squad." << std::endl;
-            return _nbUnits;
-        }
-        _lastUnit->next = cpyUnit;
-        _lastUnit = _lastUnit->next;
+        _lastUnit->setNext(unit);
+        _lastUnit = _lastUnit->getNext();
     }
+    unit->incrNbSquads();
     return ++_nbUnits;
 }
 
-bool    Squad::isInSquad(ISpaceMarine* unit)
+bool    Squad::isInSquad(ISpaceMarine* unit) const
 {
-    ISpaceMarine* tmp(_firstUnit);    
-    
-    while (tmp)
+    ISpaceMarine*   tmp(_firstUnit);
+    int             nbUnits(_nbUnits);
+
+    while (tmp && nbUnits--)
     {
         if (tmp->getIdentifier() == unit->getIdentifier())
             return true;
-        tmp = tmp->next;
+        tmp = tmp->getNext();
     }
     return false;
 }
