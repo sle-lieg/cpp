@@ -4,28 +4,33 @@
 #include "ISquad.hpp"
 #include <iostream>
 
+/**
+ * !!!! WARNING REMOVE DEFINE
+ */
+#define print(x)(std::cout << x << std::endl)
+
 class Squad : public ISquad
 {
      public:
         Squad();
         Squad(Squad const &);
-        // Squad(ISquad const &);
         virtual ~Squad();
 
         Squad& operator=(Squad const &);
-        // Squad& operator=(ISquad const &);
 
         int             getCount() const;
-        ISpaceMarine*   getUnit(int) const;
+        ISpaceMarine*   getUnit(int) const; // return the unit itself
+        S_Squad*        getFirstUnit() const; // return the node of the first unit
+        S_Squad*        getLastUnit() const; // return the node of the last unit
         int             push(ISpaceMarine*);
 
     private:
-        virtual void    destroySquad();
-        virtual void    cloneSquad(Squad const &);
-        virtual bool    isInSquad(ISpaceMarine*) const;
+        void    destroySquad();
+        void    cloneSquad(Squad const &);
+        bool    isInSquad(ISpaceMarine*) const;
 
-        ISpaceMarine*   _firstUnit; // const pointer to the first unit of the squad
-        ISpaceMarine*   _lastUnit;  // pointer to the last unit
+        S_Squad*        _firstUnit; // const pointer to the first unit of the squad
+        S_Squad*        _lastUnit;  // pointer to the last unit
         int             _nbUnits;
 };
 
@@ -34,5 +39,4 @@ class Squad : public ISquad
 /**
  *  TODO:
  *      -change the copy constructors and assignation
- *      
  */

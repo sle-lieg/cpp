@@ -4,14 +4,15 @@
  * ******************** CONSTRUCTORS ********************
 ********************************************************/
 TacticalMarine::TacticalMarine() :
-    _identifier(reinterpret_cast<size_t>(this)), _nbSquads(0), _next(nullptr)
+    _nbSquads(0)
 {
     std::cout << "Tactical Marine ready for battle" << std::endl;
 }
 
 TacticalMarine::TacticalMarine(TacticalMarine const & unit) :
-    _identifier(reinterpret_cast<size_t>(this)), _nbSquads(0), _next(unit.getNext())
+    _nbSquads(0)
 {
+    (void)unit;
     std::cout << "Tactical Marine ready for battle" << std::endl;    
 }
 
@@ -28,6 +29,19 @@ TacticalMarine::~TacticalMarine()
 ********************************************************/
 TacticalMarine& TacticalMarine::operator=(TacticalMarine const & unit)
 {
+    (void)unit;
+    return *this;
+}
+
+TacticalMarine& TacticalMarine::operator++()
+{
+    _nbSquads++;
+    return *this;
+}
+
+TacticalMarine& TacticalMarine::operator--()
+{
+    _nbSquads--;
     return *this;
 }
 
@@ -53,10 +67,10 @@ void            TacticalMarine::meleeAttack() const
     std::cout << "* attacks with chainsword *" << std::endl;
 }
 
-size_t          TacticalMarine::getIdentifier() const
-{
-    return _identifier;
-}
+// size_t          TacticalMarine::getIdentifier() const
+// {
+//     return _identifier;
+// }
 
 size_t          TacticalMarine::getNbSquad() const
 {
@@ -64,16 +78,16 @@ size_t          TacticalMarine::getNbSquad() const
 }
 
 
-ISpaceMarine*   TacticalMarine::getNext() const
-{
-    return _next;
-}
+// ISpaceMarine*   TacticalMarine::getNext() const
+// {
+//     return _next;
+// }
 
-ISpaceMarine*   TacticalMarine::setNext(ISpaceMarine* const unit)
-{
-    _next = unit;
-    return this;
-}
+// ISpaceMarine*   TacticalMarine::setNext(ISpaceMarine* const unit)
+// {
+//     _next = unit;
+//     return this;
+// }
 
 // ISpaceMarine*   TacticalMarine::setNbSquad(size_t nb)
 // {
@@ -81,12 +95,12 @@ ISpaceMarine*   TacticalMarine::setNext(ISpaceMarine* const unit)
 //     return this;
 // }
 
-void            TacticalMarine::incrNbSquads()
-{
-    _nbSquads++;
-}
+// void            TacticalMarine::incrNbSquads()
+// {
+//     _nbSquads++;
+// }
 
-void            TacticalMarine::decrNbSquads()
-{
-    _nbSquads--;
-}
+// void            TacticalMarine::decrNbSquads()
+// {
+//     _nbSquads--;
+// }
