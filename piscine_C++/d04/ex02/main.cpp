@@ -2,7 +2,7 @@
 #include "Squad.hpp"
 #include "ISpaceMarine.hpp"
 #include "TacticalMarine.hpp"
-// #include "AssaultTerminator.hpp"
+#include "AssaultTerminator.hpp"
 
 
 int main() {
@@ -11,26 +11,39 @@ int main() {
     ISpaceMarine* titi = new TacticalMarine;
 
     ISquad* vlc = new Squad;
-    ISquad* vlc2 = new Squad;
-    // ISquad* vlc3 = new Squad(*vlc2);
-    
-    // ISquad* vlc3 = new Squad;
-    // ISquad* vlc4 = new Squad(*vlc2); // Copy constructor: clone all units in the squad
+    // ISquad* vlc2 = new Squad;
+    ISquad* vlc3 = new Squad;
+
+    // std::cout << "vlc: " << vlc->getCount() << " units" << std::endl;
+    // std::cout << "vlc2: " << vlc->getCount() << " units" << std::endl;
+    // std::cout << "vlc3: " << vlc->getCount() << " units" << std::endl;
 
     vlc->push(bob);
     vlc->push(toto);
     vlc->push(titi);
+    
+    // std::cout << "vlc: " << vlc->getCount() << " units" << std::endl;
+    // std::cout << "vlc2: " << vlc2->getCount() << " units" << std::endl;
+    // std::cout << "vlc3: " << vlc3->getCount() << " units" << std::endl;
+    ISquad* vlc2 = new Squad(static_cast<Squad&>(*vlc));
 
-    vlc2 = vlc; // deep copy, so new address for each ISpaceMarine
+    // std::cout << "vlc: " << vlc->getCount() << " units" << std::endl;
+    // std::cout << "vlc2: " << vlc2->getCount() << " units" << std::endl;
+    // std::cout << "vlc3: " << vlc3->getCount() << " units" << std::endl;
+
+    static_cast<Squad&>(*vlc3) = static_cast<Squad&>(*vlc2); // deep copy, so new address for each ISpaceMarine
+
+    // std::cout << "vlc: " << vlc->getCount() << " units" << std::endl;
+    // std::cout << "vlc2: " << vlc2->getCount() << " units" << std::endl;
+    // std::cout << "vlc3: " << vlc3->getCount() << " units" << std::endl;
 
     vlc2->push(bob);
     vlc2->push(toto);
     vlc2->push(titi);
 
-    // vlc2 = vlc3; //destruction of the units in vlc2: destruct units in vlc also
-    // vlc2->push(jim);
-
-    std::cout << vlc->getCount() << std::endl;
+    // std::cout << "vlc: " << vlc->getCount() << " units" << std::endl;
+    // std::cout << "vlc2: " << vlc2->getCount() << " units" << std::endl;
+    // std::cout << "vlc3: " << vlc3->getCount() << " units" << std::endl;
 
     for (int i = 0; i < vlc2->getCount(); ++i)
     {
@@ -41,7 +54,7 @@ int main() {
     }
     delete vlc;
     delete vlc2;
-    
+    delete vlc3;
 
 
 
@@ -64,4 +77,7 @@ int main() {
     //     cur->meleeAttack();
     // }
     // delete vlc;
-return 0; }
+    // delete vlc2;
+    
+    return 0; 
+}

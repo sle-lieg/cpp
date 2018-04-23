@@ -14,7 +14,7 @@ class Human
         std::string identify( void ) const;
         const Brain& getBrain( void ) const;
 
-    protected:
+    private:
 
         const Brain _smart;
 };

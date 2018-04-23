@@ -9,12 +9,14 @@ TacticalMarine::TacticalMarine() :
     std::cout << "Tactical Marine ready for battle" << std::endl;
 }
 
-TacticalMarine::TacticalMarine(TacticalMarine const & unit) :
-    _nbSquads(0)
-{
-    (void)unit;
-    std::cout << "Tactical Marine ready for battle" << std::endl;    
-}
+// TacticalMarine::TacticalMarine(TacticalMarine const & unit) :
+//     _nbSquads(0)
+// {
+//     (void)unit;
+//     std::cout << "Tactical Marine ready for battle" << std::endl;    
+//     return dynamic_cast<ISpaceMarine*>(new TacticalMarine);
+
+// }
 
 /********************************************************
  * ********************* DESTRUCTOR *********************
@@ -27,11 +29,11 @@ TacticalMarine::~TacticalMarine()
 /********************************************************
  * ********************* OPERATORS **********************
 ********************************************************/
-TacticalMarine& TacticalMarine::operator=(TacticalMarine const & unit)
-{
-    (void)unit;
-    return *this;
-}
+// TacticalMarine& TacticalMarine::operator=(TacticalMarine const & unit)
+// {
+//     (void)unit;
+//     return *this;
+// }
 
 TacticalMarine& TacticalMarine::operator++()
 {
@@ -48,9 +50,14 @@ TacticalMarine& TacticalMarine::operator--()
 /********************************************************
  * ****************** MEMBER FUNCTIONS ******************
 ********************************************************/
+// ISpaceMarine*   TacticalMarine::clone() const
+// {
+//     return dynamic_cast<ISpaceMarine*>(new TacticalMarine(*this));
+// }
+
 ISpaceMarine*   TacticalMarine::clone() const
 {
-    return dynamic_cast<ISpaceMarine*>(new TacticalMarine(*this));
+    return dynamic_cast<ISpaceMarine*>(new TacticalMarine);
 }
 
 void            TacticalMarine::battleCry() const

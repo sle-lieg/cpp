@@ -4,11 +4,6 @@
 #include "ISquad.hpp"
 #include <iostream>
 
-/**
- * !!!! WARNING REMOVE DEFINE
- */
-#define print(x)(std::cout << x << std::endl)
-
 class Squad : public ISquad
 {
      public:

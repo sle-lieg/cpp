@@ -5,16 +5,13 @@
 ********************************************************/
 Squad::Squad() :
     _firstUnit(nullptr), _lastUnit(nullptr), _nbUnits(0)
-{
-    print("Default Constructor");
-}
+{}
 
 Squad::Squad(Squad const & squad) :
-    _firstUnit(nullptr), _lastUnit(nullptr), _nbUnits(squad.getCount())
+    _firstUnit(nullptr), _lastUnit(nullptr), _nbUnits(0)
 {
     //COPY ALL ELEMENTS OF ARMY
     cloneSquad(squad);
-    print("Copy Constructor");
 }
 
 /********************************************************
@@ -36,11 +33,11 @@ Squad& Squad::operator=(Squad const & squad)
     // CLONE THE ELEMENTS FROM squad
     destroySquad();
     cloneSquad(squad);
-    print("Operator::=");
 
     return *this;
 }
 
+#include "TacticalMarine.hpp"
 /********************************************************
  * ****************** MEMBER FUNCTIONS ******************
 ********************************************************/
@@ -51,17 +48,11 @@ void    Squad::destroySquad()
 
     while (tmp)
     {
-        print(tmp->unit->getNbSquad());
-        std::cout << "nbSquad " << tmp->unit->getNbSquad() << std::endl;
-        if (tmp->unit->getNbSquad() != 1)
-        {
-            --*(tmp->unit);
-            tmp = tmp->next;
-            continue;
-        }
+        --*(static_cast<TacticalMarine*>(tmp->unit));
         toDelete = tmp;
         tmp = tmp->next;
-        delete toDelete->unit;
+        if (static_cast<TacticalMarine*>(toDelete->unit)->getNbSquad() == 0)
+            delete toDelete->unit;
         delete toDelete;
     }
     _firstUnit = nullptr;
@@ -71,8 +62,8 @@ void    Squad::destroySquad()
 
 void    Squad::cloneSquad(Squad const & squad)
 {
-    S_Squad* tmp(nullptr);
-    S_Squad* cpySquad(nullptr);
+    S_Squad* tmp = nullptr;
+    S_Squad* cpySquad = nullptr;
 
     if (!squad.getCount())
         return;
@@ -80,23 +71,22 @@ void    Squad::cloneSquad(Squad const & squad)
     tmp = squad.getFirstUnit();
     _firstUnit = new S_Squad;
     _firstUnit->unit = tmp->unit->clone();
-    ++*(_firstUnit->unit);// ????
+    ++*(static_cast<TacticalMarine*>(_firstUnit->unit));    
 
     cpySquad = _firstUnit;
     while (tmp && tmp->next)
     {
-        // tmp->unit->incrNbSquads();
         tmp = tmp->next;
         cpySquad->next = new S_Squad;
-        cpySquad->next->unit = tmp->unit->clone();
+
+        cpySquad->next->next = nullptr;
+
         cpySquad = cpySquad->next;
-        ++*(cpySquad->unit);
-        // cpySquad = tmp->next;
-        // tmp->setNext(cpySquad->clone());
-        // tmp = tmp->next;
+        cpySquad->unit = tmp->unit->clone();
+        ++*(static_cast<TacticalMarine*>(cpySquad->unit));
     }
     _lastUnit = cpySquad;
-    // tmp->setNext(_lastUnit);
+    _nbUnits = squad.getCount();
 }
 
 int Squad::getCount() const
@@ -137,7 +127,8 @@ int Squad::push(ISpaceMarine* unit)
     }
     if (!_firstUnit)
     {
-        _firstUnit = _lastUnit = new S_Squad;
+        _firstUnit = new S_Squad;
+        _lastUnit = _firstUnit;
         _firstUnit->unit = unit;
         _firstUnit->next = nullptr;
     }
@@ -148,7 +139,8 @@ int Squad::push(ISpaceMarine* unit)
         _lastUnit->unit = unit;
         _lastUnit->next = nullptr;
     }
-    ++(*unit);
+        ++*(static_cast<TacticalMarine*>(unit));
+    // ++(*unit);
     return ++_nbUnits;
 }
 
