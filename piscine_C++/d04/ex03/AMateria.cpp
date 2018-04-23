@@ -11,15 +11,24 @@ AMateria::AMateria(AMateria const & amateria) :
 AMateria::~AMateria()
 {}
 
-AMateria& AMateria::operator=(AMateria const & amateria)
-{
-    _type = amateria.getType();
-    _xp = amateria.getXP();
+// AMateria& AMateria::operator=(AMateria const & amateria)
+// {
+//     _xp = amateria.getXP();
 
-    return *this;
-}
+//     return *this;
+// }
 
 void    AMateria::use(ICharacter& target)
 {
     _xp += 10;
+}
+
+std::string const & AMateria::getType() const
+{
+    return _type;
+}
+
+unsigned int        AMateria::getXP() const
+{
+    return _xp;
 }
