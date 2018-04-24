@@ -16,6 +16,7 @@ class Ice : public AMateria
 
     private:
         Ice& operator=(Ice const &);
+        int _nbAssociations;
 };
 
 #endif

@@ -20,6 +20,7 @@ AMateria& AMateria::operator=(AMateria const & amateria)
 
 void    AMateria::use(ICharacter& target)
 {
+    std::cout << target.getName();
     _xp += 10;
 }
 
