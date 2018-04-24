@@ -4,6 +4,8 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
+#define MAX_MATERIAS 4
+
 class AMateria
 {
     public:
@@ -17,12 +19,17 @@ class AMateria
         virtual AMateria*   clone() const = 0;
         virtual void        use(ICharacter& target);
 
+        void            incrNbEquiped();
+        void            decrNbEquiped();
+        unsigned int    getNbEquiped() const;
+        
+
     private:
         AMateria& operator=(AMateria const &);
         // AMateria(); ??????? FCOC ?????    
         std::string     _type;
         unsigned int    _xp;
-
+        unsigned int    _nbEquiped;
 };
 
 #endif

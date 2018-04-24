@@ -4,8 +4,6 @@
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
 
-#define MAX_MATERIAS 4
-
 // class AMateria;
 class Character : public ICharacter
 {
