@@ -1,9 +1,8 @@
 #ifndef IASTEROID_HPP
 # define IASTEROID_HPP
 
-#include "DeepCoreMiner.hpp"
-#include "StripMiner.hpp"
-
+class DeepCoreMiner;
+class StripMiner;
 #include <iostream>
 
 class IAsteroid

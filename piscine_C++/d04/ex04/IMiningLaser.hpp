@@ -1,7 +1,6 @@
 #ifndef IMININGLASER_HPP
 # define IMININGLASER_HPP
 
-class IAsteroid;
 #include "IAsteroid.hpp"
 #include <iostream>
 
