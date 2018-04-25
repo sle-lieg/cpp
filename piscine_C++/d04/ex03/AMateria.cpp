@@ -13,6 +13,7 @@ AMateria::~AMateria()
 
 AMateria& AMateria::operator=(AMateria const & amateria)
 {
+    std::cout << "Operator= called" << std::endl;
     _xp = amateria.getXP();
     _nbEquiped = 0;
 

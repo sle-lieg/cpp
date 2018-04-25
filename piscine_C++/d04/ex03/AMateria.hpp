@@ -24,14 +24,13 @@ class AMateria
         unsigned int    getNbEquiped() const;
         
 
-    private:
         AMateria& operator=(AMateria const &);
-        // AMateria(); ??????? FCOC ?????    
+    private:
+        AMateria();
+
         std::string     _type;
         unsigned int    _xp;
         unsigned int    _nbEquiped;
 };
 
 #endif
-
-// _type et _xp en private ??

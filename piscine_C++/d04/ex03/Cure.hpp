@@ -15,7 +15,6 @@ class Cure : public AMateria
 
     private:
         Cure& operator=(Cure const &);
-        int _nbAssociations;
 };
 
 #endif

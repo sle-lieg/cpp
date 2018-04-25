@@ -88,3 +88,8 @@ void Character::use(int idx, ICharacter& target)
     if (_materiaSlot[idx])
         _materiaSlot[idx]->use(target);
 }
+
+AMateria*       Character::getMateria(int idx) const
+{
+    return _materiaSlot[idx];
+}

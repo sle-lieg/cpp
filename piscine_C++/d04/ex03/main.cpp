@@ -8,7 +8,7 @@ int main()
     IMateriaSource* src = new MateriaSource();
     
     src->learnMateria(new Ice());
-    src->learnMateria(new Cure());    
+    src->learnMateria(new Cure());
     ICharacter* zaz = new Character("zaz");
     AMateria* tmp;
     tmp = src->createMateria("ice");
@@ -16,19 +16,33 @@ int main()
     tmp = src->createMateria("cure");
     zaz->equip(tmp);
     ICharacter* bob = new Character("bob");
+
+    tmp = static_cast<Character&>(*zaz).getMateria(0);
+    std::cout << "materia[0] XP: " << tmp->getXP() << std::endl;
+    static_cast<Character&>(*zaz).getMateria(1);
+    std::cout << "materia[1] XP: " << tmp->getXP() << std::endl;
+    
     zaz->use(0, *bob);
     zaz->use(1, *bob);
+    tmp = static_cast<Character&>(*zaz).getMateria(0);
+    std::cout << "materia[0] XP: " << tmp->getXP() << std::endl;
+    static_cast<Character&>(*zaz).getMateria(1);
+    std::cout << "materia[1] XP: " << tmp->getXP() << std::endl;
+    
     delete bob;
     delete zaz;
     delete src;
     return 0;
+
     // Character hero("Clad");
-    // Character hero2("Barret");    
+    // Character hero2("Barret");
     // Character boss("Sephiroth");
 
     // AMateria* ice = new Ice;
     // AMateria* ice2 = new Ice;
     // AMateria* ice3 = new Ice;
+
+    // *ice3 = *ice2;
 
     // hero.equip(ice);
     // hero.equip(ice2);

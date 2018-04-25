@@ -1,25 +1,34 @@
 #include <iostream>
 
-class IA {
-    public:
-        virtual ~IA() {}
-        virtual void test() const = 0;
 
-    protected:
-        int val = 0;
-};
-
-class B : public IA {
+// FONCTION TEMPLATE MEMBRE DANS CLASS NON-TEMPLATE
+class A
+{
+    int i;
     
     public:
-        B() { val = 5;};
-        void test() const { std::cout << "testing " << val << std::endl;}
-        // B(A const &);
+        template <class T>
+        void add(T valeur);
 };
 
-int main()
+template <class T>
+void A::add(T valeur)
 {
-    B b;
-
-    b.test();
+    i += valeur;
 }
+
+// FONCTION TEMPLATE MEMBRE DANS CLASS TEMPLATE
+template <class T1>
+class Chaine
+{
+    public:
+        template <class T2> int compare() const;
+
+    private:
+        int _len;
+}
+
+// int main()
+// {
+//     std::cout << "max: " << max(1, 5) << std::endl;
+// }

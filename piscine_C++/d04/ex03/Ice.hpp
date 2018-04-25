@@ -10,12 +10,10 @@ class Ice : public AMateria
         Ice(Ice const &);
         ~Ice();
 
-        virtual AMateria*   clone() const;
-        virtual void        use(ICharacter& target);
-
+        AMateria*   clone() const;
+        void        use(ICharacter& target);
     private:
         Ice& operator=(Ice const &);
-        int _nbAssociations;
 };
 
 #endif
