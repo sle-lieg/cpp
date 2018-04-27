@@ -22,7 +22,9 @@
         "map": "cpp",
         "memory": "cpp",
         "string_view": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp"
     },
     "C_Cpp.dimInactiveRegions": true
 }
